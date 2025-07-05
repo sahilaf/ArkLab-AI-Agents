@@ -14,8 +14,6 @@ interface Agent {
   status: string;
   category: string;
   pricingModel: string;
-  icon: string;
-  featured: boolean;
 }
 
 interface AgentCardProps {
@@ -53,29 +51,17 @@ const AgentCard = ({ agent }: AgentCardProps) => {
 
   return (
     <Card
-      className={`h-full transition-all duration-300 hover:shadow-xl hover:shadow-amber-400/30 hover:scale-[1.02] cursor-pointer group bg-gradient-to-br from-[#0f1c10]/50 via-[#1e1a0f]/40 to-[#142a12]/40 border border-[#2f3b2f]/30 backdrop-blur-sm relative overflow-hidden ${
-        agent.featured
-          ? "ring-2 ring-amber-300/40 shadow-lg shadow-amber-300/20"
-          : ""
-      }`}
-    >
+      className="h-full transition-all duration-300 hover:shadow-xl hover:shadow-amber-400/30 hover:scale-[1.02] cursor-pointer group bg-gradient-to-br from-[#0f1c10]/50 via-[#1e1a0f]/40 to-[#142a12]/40 border border-[#2f3b2f]/30 backdrop-blur-sm relative overflow-hidden ">
       {/* Subtle hover glow effect */}
       <div className="absolute inset-0 bg-gradient-to-br from-amber-300/10 via-transparent to-lime-400/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 
       <CardHeader className="pb-3 relative z-10">
         <div className="flex items-start justify-between">
-          <div className="text-3xl mb-2 group-hover:scale-105 transition-transform duration-200">
-            {agent.icon}
-          </div>
+          
           <div className="flex flex-col gap-1.5">
             <Badge className={`text-xs font-medium ${getStatusColor(agent.status)}`}>
               {agent.status}
             </Badge>
-            {agent.featured && (
-              <Badge className="bg-gradient-to-r from-yellow-500/60 to-lime-500/60 text-white text-xs font-medium border-yellow-400/30">
-                Featured
-              </Badge>
-            )}
           </div>
         </div>
         <CardTitle className="text-lg font-semibold text-slate-100 group-hover:text-white transition-colors">
